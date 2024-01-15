@@ -1,15 +1,61 @@
-import React from "react"
 import { useConsent } from "../../hooks/useConsent"
+import { Table } from "antd";
+import { CONSENT_TYPES } from "../../constants";
+import { LoadingOutlined } from "@ant-design/icons";
+
+import styles from "./Consents.module.css";
 
 export const Consents = () => {
-  const { isLoading, fetchConsents } = useConsent();
-  React.useEffect(() => {
-    if (!isLoading) {
-      fetchConsents();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const { isLoading, consentsList } = useConsent();
+
+  const columns = [
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
+    },
+    {
+      title: 'Consents',
+      dataIndex: 'consentIds',
+      key: 'consentIds',
+      render: (userConsents, index) => (
+        <span key={`${userConsents[0]}-${index}`}>
+          {userConsents.map((consentKey, index) => {
+            const consentName = CONSENT_TYPES[consentKey].text;
+
+            return (
+              <p key={`${consentKey}-${index}`}>
+                {consentName}
+              </p>
+            )
+          })}
+        </span>
+      )
+    },
+  ];
+
   return (
-    <h4>Consents</h4>
+    <>
+      <h4>Consents information</h4>
+      {isLoading ? (
+        <span className={styles.loadingContainer}>
+          <LoadingOutlined />
+        </span>
+      ) : (
+        <Table
+          columns={columns}
+          dataSource={consentsList}
+          rowKey="id"
+          pagination={{
+            pageSize: 2
+          }}
+        />
+      )}
+    </>
   )
 }
