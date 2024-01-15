@@ -1,0 +1,222 @@
+{
+  "londrina": {
+    "cidade": "Londrina",
+    "id": "londrina",
+    "parametros": {
+      "ocupacao": {
+        "nome": "Ocupação",
+        "chave": "ocupacao",
+        "opcoes": [
+          "Sem uso",
+          "Agropecuária",
+          "Residencial",
+          "Industrial",
+          "Comércio/Serviço"
+        ]
+      },
+      "tipoConstrucao": {
+        "nome": "Tipo de Construção",
+        "chave": "tipoConstrucao",
+        "opcoes": [
+          "Casa",
+          "Apto",
+          "Sala comercial",
+          "Galpão",
+          "Telheiro",
+          "Indústria"
+        ],
+        "inputExtra": {
+          "label": "Outros",
+          "tipo": "text",
+          "mascara": null
+        }
+      },
+      "piscina": {
+        "nome": "Piscina",
+        "chave": "piscina",
+        "opcoes": [
+          "Até 50m²",
+          "de 50,01 a 100m²",
+          "Acima de 100,01m²",
+          "Não"
+        ],
+        "inputExtra": {
+          "label": "Área piscina",
+          "tipo": "tel",
+          "mascara": "decimal"
+        }
+      },
+      "arCentral": {
+        "nome": "Ar Condicionado Central",
+        "chave": "arCentral",
+        "opcoes": [
+          "Sim",
+          "Não"
+        ]
+      },
+      "elevador": {
+        "nome": "Elevador",
+        "chave": "elevador",
+        "opcoes": [
+          "Sim",
+          "Não"
+        ]
+      },
+      "tipoMaterial": {
+        "nome": "Tipo de Material",
+        "chave": "tipoMaterial",
+        "opcoes": [
+          "Metal",
+          "Madeira",
+          "Tijolo",
+          "Bloco"
+        ],
+        "inputExtra": {
+          "label": "Outros",
+          "tipo": "text",
+          "mascara": null
+        }
+      },
+      "esquadria": {
+        "nome": "Esquadria",
+        "chave": "esquadria",
+        "opcoes": [
+          "Sem",
+          "Madeira",
+          "Ferro",
+          "Alumínio"
+        ],
+        "inputExtra": {
+          "label": "Outros",
+          "tipo": "text",
+          "mascara": null
+        }
+      },
+      "cobertura": {
+        "nome": "Cobertura",
+        "chave": "cobertura",
+        "opcoes": [
+          "Metálica",
+          "Trelha Cerâmica",
+          "Fibrocimento",
+          "Laje"
+        ],
+        "inputExtra": {
+          "label": "Outros",
+          "tipo": "text",
+          "mascara": null
+        }
+      },
+      "revestimentoExterno": {
+        "nome": "Revestimento Externo",
+        "chave": "revestimentoExterno",
+        "opcoes": [
+          "Sem",
+          "Reboco",
+          "Massa Fina",
+          "Cerâmica"
+        ],
+        "inputExtra": {
+          "label": "Outros",
+          "tipo": "text",
+          "mascara": null
+        }
+      },
+      "pinturaExterna": {
+        "nome": "Pintura Externa",
+        "chave": "pinturaExterna",
+        "opcoes": [
+          "Sem",
+          "Caiação",
+          "Acrílica",
+          "Óleo"
+        ],
+        "inputExtra": {
+          "label": "Outros",
+          "tipo": "text",
+          "mascara": null
+        }
+      },
+      "revestimentoInterno": {
+        "nome": "Revestimento Interno",
+        "chave": "revestimentoInterno",
+        "opcoes": [
+          "Sem",
+          "Reboco",
+          "Massa Fina",
+          "Cerâmica"
+        ],
+        "inputExtra": {
+          "label": "Outros",
+          "tipo": "text",
+          "mascara": null
+        }
+      },
+      "pinturaInterna": {
+        "nome": "Pintura Interna",
+        "chave": "pinturaInterna",
+        "opcoes": [
+          "Sem",
+          "Caiação",
+          "Latex",
+          "Óleo"
+        ],
+        "inputExtra": {
+          "label": "Outros",
+          "tipo": "text",
+          "mascara": null
+        }
+      },
+      "forro": {
+        "nome": "Forro",
+        "chave": "forro",
+        "opcoes": [
+          "Sem",
+          "Madeira",
+          "Chapa/PVC",
+          "Laje"
+        ],
+        "inputExtra": {
+          "label": "Outros",
+          "tipo": "text",
+          "mascara": null
+        }
+      },
+      "eletrica": {
+        "nome": "Instalação Elétrica",
+        "chave": "eletrica",
+        "opcoes": [
+          "Sem",
+          "Aparente",
+          "Semi Embutida",
+          "Embutida"
+        ]
+      },
+      "sanitaria": {
+        "nome": "Instalação Sanitária",
+        "chave": "sanitaria",
+        "opcoes": [
+          "Sem",
+          "Externa",
+          "Interna",
+          "Duas Internas",
+          "Mais de duas internas"
+        ]
+      },
+      "piso": {
+        "nome": "Piso",
+        "chave": "piso",
+        "opcoes": [
+          "Cimento",
+          "Madeira",
+          "Cerâmica"
+        ],
+        "inputExtra": {
+          "label": "Outros",
+          "tipo": "text",
+          "mascara": null
+        }
+      }
+    }
+  }
+}

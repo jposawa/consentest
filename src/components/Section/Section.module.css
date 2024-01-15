@@ -1,0 +1,54 @@
+.section {
+	position: relative;
+	overflow: auto;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+
+	.titleContainer {
+		width: 100%;
+		bottom: 100%;
+    display: flex;
+		justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+		background: color-mix(
+			in hsl shorter hue,
+			var(--corBranca) 80%,
+			var(--corPreta)
+		);
+		padding: 0.2rem 1rem;
+
+		&.toggable {
+			cursor: pointer;
+		}
+	}
+
+	/* &:has(.closed) {
+		.titleContainer {
+			padding-left: 0.5rem;
+		}
+	} */
+}
+
+.contentContainer {
+	position: relative;
+	overflow: auto;
+  height: 100%;
+	max-height: var(--maxHeight, 10rem);
+	transition: max-height 200ms linear;
+
+	&.closed {
+		overflow: hidden;
+		max-height: 0;
+	}
+}
+
+.openMark {
+  font-size: 2rem;
+  transition: transform 300ms linear;
+
+  &.open {
+    transform: rotate(90deg);
+  }
+}

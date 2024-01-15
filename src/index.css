@@ -1,0 +1,24 @@
+:root {
+  /*Doing this to change the conversion of 1rem to 10px*/
+  font-size: 10px;
+
+  --colorMain: hsl(210, 82%, 17%);
+  --colorWhite: hsl(0,0%,90%);
+  --colorBlack: hsl(0,0%,10%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: Tahoma, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Verdana, Arial, sans-serif;
+}
+
+.mainTheme {
+  --corFundo: var(--colorWhite);
+  --corTexto: var(--colorBlack);
+  --corTextoInvertido: var(--colorWhite);
+}
