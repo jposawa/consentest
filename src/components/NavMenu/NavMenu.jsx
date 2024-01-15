@@ -1,7 +1,7 @@
 import PropType from "prop-types";
 import styles from "./NavMenu.module.css";
 import { Link, useLocation } from "react-router-dom";
-import { AppstoreAddOutlined, AppstoreOutlined } from "@ant-design/icons";
+import { AppstoreAddOutlined, AppstoreOutlined, BulbFilled, BulbOutlined } from "@ant-design/icons";
 import { Switch } from "antd";
 import { useRecoilState } from "recoil";
 import { currentThemeState } from "../../state";
@@ -32,7 +32,7 @@ export const NavMenu = ({
   }
 
   const handleThemeSwitch = (checked) => {
-    setCurrentTheme(checked ? "darkTheme" : "lightTheme");
+    setCurrentTheme(checked ? "dark" : "light");
   }
 
   return (
@@ -51,10 +51,12 @@ export const NavMenu = ({
         </Link>
       ))}
       <span className={styles.themeSwitchContainer}>
+        <BulbFilled />
         <Switch
-          checked={currentTheme === "darkTheme"}
+          checked={currentTheme === "dark"}
           onChange={handleThemeSwitch}
         />
+        <BulbOutlined />
       </span>
     </nav>
   )

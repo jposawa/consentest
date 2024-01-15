@@ -5,6 +5,8 @@ import { Router } from "./pages";
 import styles from "./App.module.css";
 import { useRecoilValue } from "recoil";
 import { currentThemeState } from "./state";
+import { ConfigProvider } from "antd";
+import { THEME_COLORS } from "./constants";
 
 createServer({
   models: {
@@ -53,13 +55,23 @@ function App() {
   const currentTheme = useRecoilValue(currentThemeState);
 
   return (
-    <main className={`${styles.mainContainer} ${currentTheme}`}>
-      <section className={styles.pageContainer}>
-        <Router />
-      </section>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorBgContainer: THEME_COLORS[currentTheme].background,
+          colorTextBase: THEME_COLORS[currentTheme].text,
+        }
+      }}
+    >
+      <main className={`${styles.mainContainer} ${currentTheme}Theme`}>
+        <section className={styles.pageContainer}>
+          <Router />
+        </section>
 
-      <NavMenu className={styles.mainMenu} />
-    </main>
+        <NavMenu className={styles.mainMenu} />
+      </main>
+    </ConfigProvider>
+
   )
 }
 
