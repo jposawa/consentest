@@ -3,6 +3,8 @@ import { NavMenu } from "./components/";
 import { Router } from "./pages";
 
 import styles from "./App.module.css";
+import { useRecoilValue } from "recoil";
+import { currentThemeState } from "./state";
 
 createServer({
   models: {
@@ -48,8 +50,10 @@ createServer({
 });
 
 function App() {
+  const currentTheme = useRecoilValue(currentThemeState);
+
   return (
-    <main className={`${styles.mainContainer} temaPrincipal`}>
+    <main className={`${styles.mainContainer} ${currentTheme}`}>
       <section className={styles.pageContainer}>
         <Router />
       </section>

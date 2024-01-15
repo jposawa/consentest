@@ -17,8 +17,14 @@
   font-family: Tahoma, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Verdana, Arial, sans-serif;
 }
 
-.mainTheme {
-  --corFundo: var(--colorWhite);
-  --corTexto: var(--colorBlack);
-  --corTextoInvertido: var(--colorWhite);
+.lightTheme {
+  --colorBackground: var(--colorWhite);
+  --colorText: var(--colorBlack);
+  --colorInverseText: var(--colorWhite);
+}
+
+.darkTheme {
+  --colorBackground: var(--colorBlack);
+  --colorText: var(--colorWhite);
+  --colorInverseText: var(--colorBlack);
 }
