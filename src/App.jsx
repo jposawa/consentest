@@ -37,6 +37,13 @@ createServer({
 
       return schema.consents.create(attrs);
     })
+
+    this.put("/api/consents", (schema, request) => {
+      const attrs = JSON.parse(request.requestBody);
+      const consent = schema.consents.find(Number(attrs.id));
+
+      consent.update(attrs);
+    })
   },
 });
 

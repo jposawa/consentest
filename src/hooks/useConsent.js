@@ -1,8 +1,9 @@
 import React from "react"
-import { getConsents, postConsent } from "../services";
+import { getConsents, postConsent, putConsent } from "../services";
 
 export const useConsent = () => {
   const [isLoading, setIsLoading] = React.useState(false);
+  const [consentsList, setConsentsList] = React.useState([]);
 
   /**
    * Fetch list of consents
@@ -16,7 +17,7 @@ export const useConsent = () => {
 
       setIsLoading(false);
 
-      return response;
+      setConsentsList(response || []);
     }
   }, [isLoading]);
 
@@ -41,9 +42,40 @@ export const useConsent = () => {
     }
   }, [isLoading]);
 
+  /**
+   * Update consent
+   * 
+   * @param {object} body
+   * @param {string} body.id
+   * @param {string} body.name
+   * @param {string} body.email
+   * @param {string[]} body.consentIds
+   * 
+   * @returns {object} Latest consent sent
+   */
+  const updateConsent = React.useCallback(async (body) => {
+    if (!isLoading) {
+      setIsLoading(true);
+      const response = await putConsent(body);
+
+      setIsLoading(false);
+
+      return response;
+    }
+  }, [isLoading]);
+
+  React.useEffect(() => {
+    if (!consentsList.length && !isLoading) {
+      fetchConsents();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return React.useMemo(() => ({
+    consentsList,
     isLoading,
     fetchConsents,
     sendConsent,
-  }), [isLoading, fetchConsents, sendConsent]);
+    updateConsent,
+  }), [consentsList, isLoading, fetchConsents, sendConsent, updateConsent]);
 }
