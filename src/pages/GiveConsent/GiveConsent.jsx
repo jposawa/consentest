@@ -8,9 +8,9 @@ export const GiveConsent = () => {
   }
   const { isLoading, sendConsent } = useConsent();
 
-  const handleSendConsent = () => {
+  const handleSendConsent = async () => {
     if (!isLoading) {
-      sendConsent(testData);
+      console.log(await sendConsent(testData));
     }
   }
   return (

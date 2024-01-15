@@ -10,7 +10,7 @@ export const getConsents = () => (
   })
 )
 
-export const postConsent = (body) => {
+export const postConsent = (body) => (
   fetch(API_URL, {
     method: "POST",
     body: JSON.stringify(body),
@@ -25,4 +25,4 @@ export const postConsent = (body) => {
   }).catch((error) => {
     console.error("Post error", error);
   })
-}
+)
