@@ -1,7 +1,10 @@
 import PropType from "prop-types";
 import styles from "./NavMenu.module.css";
 import { Link, useLocation } from "react-router-dom";
-import { AppstoreAddOutlined, AppstoreOutlined } from "@ant-design/icons";
+import { AppstoreAddOutlined, AppstoreOutlined, BulbFilled, BulbOutlined } from "@ant-design/icons";
+import { Switch } from "antd";
+import { useRecoilState } from "recoil";
+import { currentThemeState } from "../../state";
 
 // Making this constant here because I'm including external components (Icons) in the objects
 const MAIN_MENU = [
@@ -22,9 +25,14 @@ export const NavMenu = ({
   className,
   style,
 }) => {
+  const [currentTheme, setCurrentTheme] = useRecoilState(currentThemeState);
   const { pathname } = useLocation();
   const currentUrlClass = (item) => {
     return pathname === item.url || pathname === item.urlAlt ? styles.current : ""
+  }
+
+  const handleThemeSwitch = (checked) => {
+    setCurrentTheme(checked ? "dark" : "light");
   }
 
   return (
@@ -42,6 +50,14 @@ export const NavMenu = ({
           <p>{item.text}</p>
         </Link>
       ))}
+      <span className={styles.themeSwitchContainer}>
+        <BulbFilled />
+        <Switch
+          checked={currentTheme === "dark"}
+          onChange={handleThemeSwitch}
+        />
+        <BulbOutlined />
+      </span>
     </nav>
   )
 }

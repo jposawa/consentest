@@ -3,6 +3,10 @@ import { NavMenu } from "./components/";
 import { Router } from "./pages";
 
 import styles from "./App.module.css";
+import { useRecoilValue } from "recoil";
+import { currentThemeState } from "./state";
+import { ConfigProvider } from "antd";
+import { THEME_COLORS } from "./constants";
 
 createServer({
   models: {
@@ -48,14 +52,26 @@ createServer({
 });
 
 function App() {
-  return (
-    <main className={`${styles.mainContainer} temaPrincipal`}>
-      <section className={styles.pageContainer}>
-        <Router />
-      </section>
+  const currentTheme = useRecoilValue(currentThemeState);
 
-      <NavMenu className={styles.mainMenu} />
-    </main>
+  return (
+    <ConfigProvider
+      theme={{
+        token: {
+          colorBgContainer: THEME_COLORS[currentTheme].background,
+          colorTextBase: THEME_COLORS[currentTheme].text,
+        }
+      }}
+    >
+      <main className={`${styles.mainContainer} ${currentTheme}Theme`}>
+        <section className={styles.pageContainer}>
+          <Router />
+        </section>
+
+        <NavMenu className={styles.mainMenu} />
+      </main>
+    </ConfigProvider>
+
   )
 }
 

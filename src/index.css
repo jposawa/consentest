@@ -5,6 +5,10 @@
   --colorMain: hsl(210, 82%, 17%);
   --colorWhite: hsl(0,0%,90%);
   --colorBlack: hsl(0,0%,10%);
+
+  --colorBackground: var(--colorWhite);
+  --colorText: var(--colorBlack);
+  --colorInverseText: var(--colorWhite);
 }
 
 * {
@@ -17,8 +21,8 @@
   font-family: Tahoma, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Verdana, Arial, sans-serif;
 }
 
-.mainTheme {
-  --corFundo: var(--colorWhite);
-  --corTexto: var(--colorBlack);
-  --corTextoInvertido: var(--colorWhite);
+.darkTheme {
+  --colorBackground: var(--colorBlack);
+  --colorText: var(--colorWhite);
+  --colorInverseText: var(--colorBlack);
 }

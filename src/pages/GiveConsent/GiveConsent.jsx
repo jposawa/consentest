@@ -9,9 +9,10 @@ import { useNavigate } from "react-router-dom";
 export const GiveConsent = () => {
   const navigate = useNavigate();
   const [selectedConsentIds, setSelectedConsentIds] = React.useState([])
-  const [consentValidation, setConsentValidation] = React.useState({
-    status: "success",
-    errorMsg: null,
+  const [formValid, setFormValid] = React.useState({
+    name: false,
+    email: false,
+    consents: false,
   })
   // const testData = {
   //   name: "Anakin",
@@ -38,24 +39,6 @@ export const GiveConsent = () => {
     }
   }
 
-  const checkConsentValidation = () => {
-    if (!selectedConsentIds.length) {
-      setConsentValidation({
-        status: "error",
-        errorMsg: "You need to select at least one option"
-      });
-
-      return false;
-    }
-
-    setConsentValidation({
-      status: "success",
-      errorMsg: null,
-    })
-
-    return true;
-  }
-
   const handleConsentChange = ({ target: { checked, name } }) => {
     const newList = [...selectedConsentIds];
     if (checked) {
@@ -70,14 +53,14 @@ export const GiveConsent = () => {
       }
     }
 
+    setFormValid((currentFormValid) => ({
+      ...currentFormValid,
+      consents: !!newList.length,
+    }))
     setSelectedConsentIds(newList);
   }
 
   const handleSubmit = async (values) => {
-    if (!checkConsentValidation()) {
-      return;
-    }
-
     const [existingUser] = consentsList.filter((consentData) => consentData.email === values.email);
 
     const formData = existingUser ? { ...existingUser } : { ...values }
@@ -86,6 +69,15 @@ export const GiveConsent = () => {
     handleSendConsent(formData, !existingUser);
   }
 
+  const handleFormChange = ({ target: { id, value } }) => {
+    if (id) {
+      const validState = { ...formValid };
+
+      validState[id] = !!value;
+
+      setFormValid(validState);
+    }
+  }
 
   return (
     <>
@@ -96,6 +88,7 @@ export const GiveConsent = () => {
         autoComplete="off"
         disabled={isLoading}
         className={styles.consentForm}
+        onChange={handleFormChange}
       >
         <div className={styles.formItemsContainer}>
           <div className={styles.personalInfoContainer}>
@@ -128,8 +121,6 @@ export const GiveConsent = () => {
 
           <Form.Item
             label="I agree to"
-            validateStatus={consentValidation.status}
-            help={consentValidation.errorMsg}
             className={styles.optionsContainer}
           >
             {Object.values(CONSENT_TYPES).map((consent) => (
@@ -148,7 +139,7 @@ export const GiveConsent = () => {
           <Button
             type="primary"
             htmlType="submit"
-            disabled={isLoading}
+            disabled={isLoading || Object.values(formValid).some((isValid) => !isValid)}
           >
             Send
           </Button>

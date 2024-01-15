@@ -8,6 +8,8 @@
 	flex-direction: column;
 	justify-content: space-between;
 	font-size: 1.6rem;
+  background: var(--colorBackground);
+  color: var(--colorText);
 
 	/*Isso é geral para todo button dentro de mainContainer*/
 	button {

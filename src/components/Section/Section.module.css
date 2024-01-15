@@ -14,8 +14,8 @@
     gap: 0.5rem;
 		background: color-mix(
 			in hsl shorter hue,
-			var(--corBranca) 80%,
-			var(--corPreta)
+			var(--colorBackground) 80%,
+			var(--colorText)
 		);
 		padding: 0.2rem 1rem;
 
