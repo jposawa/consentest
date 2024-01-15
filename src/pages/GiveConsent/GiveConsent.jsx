@@ -21,7 +21,7 @@ export const GiveConsent = () => {
   const {
     isLoading,
     sendConsent,
-    fetchConsents,
+    consentsList,
     updateConsent,
   } = useConsent();
 
@@ -78,9 +78,7 @@ export const GiveConsent = () => {
       return;
     }
 
-    const currentConsents = await fetchConsents();
-
-    const [existingUser] = currentConsents.filter((consentData) => consentData.email === values.email);
+    const [existingUser] = consentsList.filter((consentData) => consentData.email === values.email);
 
     const formData = existingUser ? { ...existingUser } : { ...values }
     formData.consentIds = selectedConsentIds;
