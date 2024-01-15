@@ -6,7 +6,7 @@ All data is mocked and no actual database is used
 
 ## Running it
 
-You can see the project running at ...
+You can see the project running at <https://testconsent.netlify.app/>
 
 You can also run it locally by cloning this project into your local computer
 
