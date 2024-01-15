@@ -1,6 +1,9 @@
 import { useConsent } from "../../hooks/useConsent"
 import { Table } from "antd";
 import { CONSENT_TYPES } from "../../constants";
+import { LoadingOutlined } from "@ant-design/icons";
+
+import styles from "./Consents.module.css";
 
 export const Consents = () => {
   const { isLoading, consentsList } = useConsent();
@@ -39,7 +42,11 @@ export const Consents = () => {
   return (
     <>
       <h4>Consents information</h4>
-      {!isLoading && (
+      {isLoading ? (
+        <span className={styles.loadingContainer}>
+          <LoadingOutlined />
+        </span>
+      ) : (
         <Table
           columns={columns}
           dataSource={consentsList}
