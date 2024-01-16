@@ -3,20 +3,34 @@
 	display: flex;
 	flex-direction: column;
 	gap: 5rem;
-	:global(.ant-form-item-row) {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		justify-content: flex-start;
-    flex-flow: inherit;
-	}
 }
 
 .formItemsContainer {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	gap: 2rem;
+
+	:global(.ant-form-item) {
+		min-height: 3rem;
+	}
+
+	:global(.ant-form-item-row) {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-start;
+		flex-flow: inherit;
+	}
+
+	:global(.ant-form-item-label) {
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	input {
+		border: 1px solid var(--colorText);
+		font-size: 1.5rem;
+	}
 }
 
 .optionsContainer {
@@ -24,10 +38,19 @@
 	justify-content: center;
 	padding: 0;
 	width: 100%;
-  flex-wrap: nowrap;
+	flex-wrap: nowrap;
 	:global(.ant-form-item-control-input-content) {
 		display: flex;
 		flex-direction: column;
+	}
+
+	:global(.ant-checkbox) {
+    border: 1px solid rgba(255,255,255,0);
+    transition: border-color 300ms linear;
+
+		&:not(:has(:checked)) {
+			border-color: var(--colorText);
+		}
 	}
 }
 
@@ -35,17 +58,10 @@
 	display: flex;
 	justify-content: center;
 	gap: 2rem;
+	margin-bottom: 5%;
 }
 
 .actionsContainer {
 	display: flex;
 	justify-content: center;
-}
-
-@media screen and (min-width: 900px) {
-  .consentForm {
-    :global(.ant-form-item-row) {
-      flex-flow: column;
-    }
-  }
 }

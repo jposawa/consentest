@@ -3,6 +3,10 @@ import { NavMenu } from "./components/";
 import { Router } from "./pages";
 
 import styles from "./App.module.css";
+import { useRecoilValue } from "recoil";
+import { currentThemeState } from "./state";
+import { ConfigProvider } from "antd";
+import { THEME_COLORS, INITIAL_CONSENTS } from "./constants";
 
 createServer({
   models: {
@@ -10,20 +14,8 @@ createServer({
   },
 
   seeds(server) {
-    server.create("consent", {
-      name: "Yoda",
-      email: "yoda@jedi.holo.net",
-      consentIds: ["newsletter"],
-    })
-    server.create("consent", {
-      name: "Qui-Gon",
-      email: "qgjinn@jedi.holo.net",
-      consentIds: ["newsletter", "targetedAds", "anomStatistic"],
-    })
-    server.create("consent", {
-      name: "Obi-Wan",
-      email: "benkenobi@jedi.holo.net",
-      consentIds: ["newsletter", "anomStatistic"],
+    INITIAL_CONSENTS.forEach((consentObj) => {
+      server.create("consent", consentObj);
     })
   },
 
@@ -48,14 +40,26 @@ createServer({
 });
 
 function App() {
-  return (
-    <main className={`${styles.mainContainer} temaPrincipal`}>
-      <section className={styles.pageContainer}>
-        <Router />
-      </section>
+  const currentTheme = useRecoilValue(currentThemeState);
 
-      <NavMenu className={styles.mainMenu} />
-    </main>
+  return (
+    <ConfigProvider
+      theme={{
+        token: {
+          colorBgContainer: THEME_COLORS[currentTheme].background,
+          colorTextBase: THEME_COLORS[currentTheme].text,
+        }
+      }}
+    >
+      <main className={`${styles.mainContainer} ${currentTheme}Theme`}>
+        <section className={styles.pageContainer}>
+          <Router />
+        </section>
+
+        <NavMenu className={styles.mainMenu} />
+      </main>
+    </ConfigProvider>
+
   )
 }
 
