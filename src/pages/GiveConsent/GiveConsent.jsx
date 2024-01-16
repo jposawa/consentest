@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
-import { useConsent } from "../../hooks/useConsent"
+import { useConsent } from "../../hooks"
 
 import styles from "./GiveConsent.module.css";
 import { CONSENT_TYPES } from "../../constants";
@@ -8,12 +8,13 @@ import { useNavigate } from "react-router-dom";
 
 export const GiveConsent = () => {
   const navigate = useNavigate();
-  const [selectedConsentIds, setSelectedConsentIds] = React.useState([])
   const [formValid, setFormValid] = React.useState({
     name: false,
     email: false,
     consents: false,
   })
+  const [selectedConsentIds, setSelectedConsentIds] = React.useState([])
+
   // const testData = {
   //   name: "Anakin",
   //   email: "aniskywalker@jedi.holo.net",
@@ -89,6 +90,7 @@ export const GiveConsent = () => {
         disabled={isLoading}
         className={styles.consentForm}
         onChange={handleFormChange}
+        data-testid="newConsentForm"
       >
         <div className={styles.formItemsContainer}>
           <div className={styles.personalInfoContainer}>
@@ -102,7 +104,10 @@ export const GiveConsent = () => {
                 }
               ]}
             >
-              <Input placeholder="Your name" />
+              <Input
+                placeholder="Your name"
+                data-testid="newConsentFormName"
+              />
             </Form.Item>
 
             <Form.Item
@@ -115,7 +120,11 @@ export const GiveConsent = () => {
                 }
               ]}
             >
-              <Input type="email" placeholder="name@domain.com" />
+              <Input
+                type="email"
+                placeholder="name@domain.com"
+                data-testid="newConsentFormEmail"
+              />
             </Form.Item>
           </div>
 
@@ -128,6 +137,7 @@ export const GiveConsent = () => {
                 key={consent.key}
                 onChange={handleConsentChange}
                 name={consent.key}
+                data-testid={`newConsentFormCheck-${consent.key}`}
               >
                 {consent.text}
               </Checkbox>
@@ -140,6 +150,7 @@ export const GiveConsent = () => {
             type="primary"
             htmlType="submit"
             disabled={isLoading || Object.values(formValid).some((isValid) => !isValid)}
+            data-testid="newConsentSubmit"
           >
             Send
           </Button>

@@ -1,4 +1,4 @@
-import { useConsent } from "../../hooks/useConsent"
+import { useConsent } from "../../hooks"
 import { Table } from "antd";
 import { CONSENT_TYPES } from "../../constants";
 import { LoadingOutlined } from "@ant-design/icons";
@@ -43,7 +43,7 @@ export const Consents = () => {
     <>
       <h4>Consents information</h4>
       {isLoading ? (
-        <span className={styles.loadingContainer}>
+        <span className={styles.loadingContainer} data-testid="loadingContainer">
           <LoadingOutlined />
         </span>
       ) : (
@@ -54,6 +54,7 @@ export const Consents = () => {
           pagination={{
             pageSize: 2
           }}
+          data-testid="consentTable"
         />
       )}
     </>

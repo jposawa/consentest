@@ -1,11 +1,11 @@
 import React from "react";
-import { LIMITE_MOBILE } from "../constantes";
+import { MOBILE_THRESHOLD } from "../constants";
 
 export const useMobile = () => {
   const [isMobile, setIsMobile] = React.useState(false);
 
   const checaMobile = React.useCallback(({ target: screenInfo }) => {
-    setIsMobile(screenInfo.innerWidth < LIMITE_MOBILE);
+    setIsMobile(screenInfo.innerWidth < MOBILE_THRESHOLD);
   }, []);
 
   React.useEffect(() => {
