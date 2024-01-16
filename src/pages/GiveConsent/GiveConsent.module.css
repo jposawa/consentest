@@ -26,6 +26,11 @@
 		display: flex;
 		justify-content: flex-start;
 	}
+
+	input {
+		border: 1px solid var(--colorText);
+		font-size: 1.5rem;
+	}
 }
 
 .optionsContainer {
@@ -37,6 +42,15 @@
 	:global(.ant-form-item-control-input-content) {
 		display: flex;
 		flex-direction: column;
+	}
+
+	:global(.ant-checkbox) {
+    border: 1px solid rgba(255,255,255,0);
+    transition: border-color 300ms linear;
+
+		&:not(:has(:checked)) {
+			border-color: var(--colorText);
+		}
 	}
 }
 
