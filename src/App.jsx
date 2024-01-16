@@ -6,7 +6,7 @@ import styles from "./App.module.css";
 import { useRecoilValue } from "recoil";
 import { currentThemeState } from "./state";
 import { ConfigProvider } from "antd";
-import { THEME_COLORS } from "./constants";
+import { THEME_COLORS, INITIAL_CONSENTS } from "./constants";
 
 createServer({
   models: {
@@ -14,20 +14,8 @@ createServer({
   },
 
   seeds(server) {
-    server.create("consent", {
-      name: "Yoda",
-      email: "yoda@jedi.holo.net",
-      consentIds: ["newsletter"],
-    })
-    server.create("consent", {
-      name: "Qui-Gon",
-      email: "qgjinn@jedi.holo.net",
-      consentIds: ["newsletter", "targetedAds", "anomStatistic"],
-    })
-    server.create("consent", {
-      name: "Obi-Wan",
-      email: "benkenobi@jedi.holo.net",
-      consentIds: ["newsletter", "anomStatistic"],
+    INITIAL_CONSENTS.forEach((consentObj) => {
+      server.create("consent", consentObj);
     })
   },
 

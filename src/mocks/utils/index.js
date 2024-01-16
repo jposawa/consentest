@@ -1,1 +1,1 @@
-export * from "./gerenciaMocks";
+export * from "./generalMocks";
