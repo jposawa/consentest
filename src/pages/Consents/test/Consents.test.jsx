@@ -8,7 +8,11 @@ import { mockMatchMedia } from "../../../mocks/utils";
 vi.mock("../../../hooks/useConsent.js");
 
 describe("Consents page", () => {
-  beforeAll(mockMatchMedia);
+  beforeAll(() => {
+    mockMatchMedia();
+    const { getComputedStyle } = window;
+    window.getComputedStyle = (elt) => getComputedStyle(elt);
+  });
 
   it("Show loading element", () => {
     useConsent.mockReturnValue({
