@@ -24,17 +24,17 @@ export const Consents = () => {
       dataIndex: 'consentIds',
       key: 'consentIds',
       render: (userConsents, index) => (
-        <span key={`${userConsents[0]}-${index}`}>
+        <ul className={styles.consentsList} key={`${userConsents[0]}-${index}`}>
           {userConsents.map((consentKey, index) => {
             const consentName = CONSENT_TYPES[consentKey].text;
 
             return (
-              <p key={`${consentKey}-${index}`}>
+              <li key={`${consentKey}-${index}`}>
                 {consentName}
-              </p>
+              </li>
             )
           })}
-        </span>
+        </ul>
       )
     },
   ];
