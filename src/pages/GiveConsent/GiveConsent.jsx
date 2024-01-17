@@ -136,6 +136,7 @@ export const GiveConsent = () => {
           <Form.Item
             label="I agree to"
             className={styles.optionsContainer}
+            required
           >
             {Object.values(CONSENT_TYPES).map((consent) => (
               <Checkbox

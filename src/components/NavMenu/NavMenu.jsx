@@ -10,15 +10,16 @@ import { currentThemeState } from "../../state";
 const MAIN_MENU = [
   {
     url: "/",
-    icon: <AppstoreOutlined />,
-    text: "Consents",
-    urlAlt: "/consents/",
-  },
-  {
-    url: "/give-consent",
     icon: <AppstoreAddOutlined />,
     text: "Give Consent",
+    urlAlt: "/give-consent",
   },
+  {
+    url: "/consents/",
+    icon: <AppstoreOutlined />,
+    text: "Consents",
+  },
+  
 ]
 
 export const NavMenu = ({
@@ -43,7 +44,7 @@ export const NavMenu = ({
       {MAIN_MENU.map((item, index) => (
         <Link
           key={`${item.url}${index}`}
-          to={item.url}
+          to={item.urlAlt || item.url}
           className={currentUrlClass(item)}
         >
           {item.icon}
