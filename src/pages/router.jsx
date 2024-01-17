@@ -4,7 +4,7 @@ import { Consents, GiveConsent } from ".";
 export const Router = () => {
   return (
     <Switch>
-      <Route index path="/" element={<Consents />} />
+      <Route index path="/" element={<GiveConsent />} />
 
       <Route path="/consents" element={<Consents />} />
 
