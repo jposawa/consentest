@@ -64,7 +64,12 @@ export const GiveConsent = () => {
   const handleSubmit = async (values) => {
     const [existingUser] = consentsList.filter((consentData) => consentData.email === values.email);
 
-    const formData = existingUser ? { ...existingUser } : { ...values }
+    const formData = existingUser ? {
+      ...existingUser,
+      name: values.name,
+    } : { ...values }
+
+    // Doing this separately because it's for both cases
     formData.consentIds = selectedConsentIds;
 
     handleSendConsent(formData, !existingUser);
