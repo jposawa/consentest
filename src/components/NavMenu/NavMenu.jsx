@@ -32,7 +32,7 @@ export const NavMenu = ({
   }
 
   const handleThemeSwitch = (checked) => {
-    setCurrentTheme(checked ? "dark" : "light");
+    setCurrentTheme(checked ? "light" : "dark");
   }
 
   return (
@@ -51,12 +51,12 @@ export const NavMenu = ({
         </Link>
       ))}
       <span className={styles.themeSwitchContainer}>
-        <BulbFilled />
+        <BulbOutlined />
         <Switch
-          checked={currentTheme === "dark"}
+          checked={currentTheme === "light"}
           onChange={handleThemeSwitch}
         />
-        <BulbOutlined />
+        <BulbFilled />
       </span>
     </nav>
   )
