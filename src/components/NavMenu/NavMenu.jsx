@@ -15,11 +15,10 @@ const MAIN_MENU = [
     urlAlt: "/give-consent",
   },
   {
-    url: "/consents/",
+    url: "/consents",
     icon: <AppstoreOutlined />,
     text: "Consents",
   },
-  
 ]
 
 export const NavMenu = ({
